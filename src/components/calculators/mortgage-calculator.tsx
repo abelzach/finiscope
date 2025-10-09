@@ -1,33 +1,44 @@
-"use client"
+"use client";
 
-import { useMemo, useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Slider } from "@/components/ui/slider"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Separator } from "@/components/ui/separator"
+import { useMemo, useState } from "react";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Slider } from "@/components/ui/slider";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Separator } from "@/components/ui/separator";
+import { MagicCard } from "@/components/ui/magic-card";
 
 function formatCurrency(n: number) {
-  return n.toLocaleString(undefined, { style: "currency", currency: "USD", maximumFractionDigits: 0 })
+  return n.toLocaleString(undefined, {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  });
 }
 
 export function MortgageCalculator() {
-  const [principal, setPrincipal] = useState<number>(500_000)
-  const [annualRate, setAnnualRate] = useState<number>(7.25)
-  const [years, setYears] = useState<number>(25)
+  const [principal, setPrincipal] = useState<number>(500_000);
+  const [annualRate, setAnnualRate] = useState<number>(7.25);
+  const [years, setYears] = useState<number>(25);
 
   const { monthly, totalInterest, totalPaid } = useMemo(() => {
-    const r = annualRate / 100 / 12
-    const n = years * 12
-    const m = r === 0 ? principal / n : (principal * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1)
-    const total = m * n
-    const interest = total - principal
-    return { monthly: m, totalInterest: interest, totalPaid: total }
-  }, [principal, annualRate, years])
+    const r = annualRate / 100 / 12;
+    const n = years * 12;
+    const m =
+      r === 0
+        ? principal / n
+        : (principal * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    const total = m * n;
+    const interest = total - principal;
+    return { monthly: m, totalInterest: interest, totalPaid: total };
+  }, [principal, annualRate, years]);
 
   return (
-    <Card>
+    <MagicCard
+      gradientColor={"#e1e6e955"}
+      className="group h-full px-6 py-6 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-md"
+    >
       <CardHeader>
         <CardTitle>Estimate your mortgage</CardTitle>
       </CardHeader>
@@ -39,7 +50,9 @@ export function MortgageCalculator() {
               id="principal"
               type="number"
               value={principal}
-              onChange={(e) => setPrincipal(Math.max(0, Number(e.target.value)))}
+              onChange={(e) =>
+                setPrincipal(Math.max(0, Number(e.target.value)))
+              }
               min={0}
             />
             <Slider
@@ -58,10 +71,18 @@ export function MortgageCalculator() {
               type="number"
               step="0.05"
               value={annualRate}
-              onChange={(e) => setAnnualRate(Math.max(0, Number(e.target.value)))}
+              onChange={(e) =>
+                setAnnualRate(Math.max(0, Number(e.target.value)))
+              }
               min={0}
             />
-            <Slider value={[annualRate]} min={0} max={18} step={0.05} onValueChange={([v]) => setAnnualRate(v)} />
+            <Slider
+              value={[annualRate]}
+              min={0}
+              max={18}
+              step={0.05}
+              onValueChange={([v]) => setAnnualRate(v)}
+            />
           </div>
 
           <div className="space-y-2">
@@ -74,7 +95,13 @@ export function MortgageCalculator() {
               min={1}
               max={40}
             />
-            <Slider value={[years]} min={1} max={40} step={1} onValueChange={([v]) => setYears(v)} />
+            <Slider
+              value={[years]}
+              min={1}
+              max={40}
+              step={1}
+              onValueChange={([v]) => setYears(v)}
+            />
           </div>
         </div>
 
@@ -86,8 +113,12 @@ export function MortgageCalculator() {
               <TabsTrigger value="tips">Tips</TabsTrigger>
             </TabsList>
             <TabsContent value="summary" className="space-y-4">
-              <div className="text-sm text-muted-foreground">Estimated monthly payment</div>
-              <div className="text-3xl font-semibold">{formatCurrency(monthly)}</div>
+              <div className="text-sm text-muted-foreground">
+                Estimated monthly payment
+              </div>
+              <div className="text-3xl font-semibold">
+                {formatCurrency(monthly)}
+              </div>
               <Separator />
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div className="space-y-1">
@@ -111,16 +142,27 @@ export function MortgageCalculator() {
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-muted-foreground">Total interest</span>
-                <span className="font-medium">{formatCurrency(totalInterest)}</span>
+                <span className="font-medium">
+                  {formatCurrency(totalInterest)}
+                </span>
               </div>
             </TabsContent>
-            <TabsContent value="tips" className="space-y-2 text-sm text-muted-foreground">
-              <p>Lower your payment by increasing the term or reducing the rate via a higher down payment.</p>
-              <p>Consider making occasional extra principal payments to reduce total interest.</p>
+            <TabsContent
+              value="tips"
+              className="space-y-2 text-sm text-muted-foreground"
+            >
+              <p>
+                Lower your payment by increasing the term or reducing the rate
+                via a higher down payment.
+              </p>
+              <p>
+                Consider making occasional extra principal payments to reduce
+                total interest.
+              </p>
             </TabsContent>
           </Tabs>
         </div>
       </CardContent>
-    </Card>
-  )
+    </MagicCard>
+  );
 }

@@ -1,9 +1,12 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import React, { useState } from "react";
+import {
+  Menu,
+  MenuItem,
+  HoveredLink,
+} from "@/components/ui/navbar-menu";
+import { cn } from "@/lib/utils";
 
 const links = [
   { href: "/", label: "Home" },
@@ -12,54 +15,50 @@ const links = [
   { href: "/founders", label: "Founders" },
   { href: "/partners", label: "Partners" },
   { href: "/calculators", label: "Calculators" },
-]
+];
 
 export function SiteHeader() {
-  const [open, setOpen] = useState(false)
-  return (
-    <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="font-semibold tracking-tight">
-          FiniScope
-        </Link>
-        <nav className="hidden md:flex items-center gap-6">
-          {links.map((l) => (
-            <Link key={l.href} href={l.href} className="text-sm hover:underline underline-offset-4">
-              {l.label}
-            </Link>
-          ))}
-          <Button asChild size="sm">
-            <Link href="/services">Get started</Link>
-          </Button>
-        </nav>
+  const [active, setActive] = useState<string | null>(null);
 
-        <div className="md:hidden">
-          <Button variant="outline" size="sm" onClick={() => setOpen((v) => !v)} aria-expanded={open}>
-            Menu
-          </Button>
-        </div>
-      </div>
+  return (
+    <div className="relative w-full flex flex-col items-center justify-center">
+      {/* Sleek top navbar */}
       <div
         className={cn(
-          "md:hidden border-t transition-[grid-template-rows] duration-200",
-          open ? "grid grid-rows-[1fr]" : "grid grid-rows-[0fr]",
+          "fixed top-0 left-1/2 transform -translate-x-1/2 z-50",
+          "backdrop-blur-md bg-white/30 dark:bg-black/30 border-b border-white/10 dark:border-white/10",
+          "rounded-3xl shadow-md "
         )}
       >
-        <div className="overflow-hidden">
-          <nav className="container mx-auto px-4 py-3 flex flex-col gap-3">
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="text-sm hover:underline underline-offset-4"
-                onClick={() => setOpen(false)}
+        <div className="max-w-5xl mx-auto px-4 py-1">
+          <Menu setActive={setActive}>
+            {links.map((link) => (
+              <MenuItem
+                key={link.href}
+                item={link.label}
+                active={active}
+                setActive={setActive}
+                href={link.href}
               >
-                {l.label}
-              </Link>
+                {/* <div className="text-sm grid grid-cols-2 gap-4 p-3">
+                  <ProductItem
+                    title="Algochurn"
+                    href="https://algochurn.com"
+                    src="https://assets.aceternity.com/demos/algochurn.webp"
+                    description="Prepare for tech interviews like never before."
+                  />
+                  <ProductItem
+                    title="Tailwind Master Kit"
+                    href="https://tailwindmasterkit.com"
+                    src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
+                    description="Production ready Tailwind css components for your next project"
+                  />
+                </div> */}
+              </MenuItem>
             ))}
-          </nav>
+          </Menu>
         </div>
       </div>
-    </header>
-  )
+    </div>
+  );
 }

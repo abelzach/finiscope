@@ -1,21 +1,28 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { AnimatedCounter } from "@/components/animated-counter"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { AnimatedCounter } from "@/components/animated-counter";
+import { Spotlight } from "@/components/ui/spotlight-new";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,_rgba(0,0,0,0.06),_transparent_60%)]" />
+    <section className="relative overflow-hidden pt-14">
+      <div className="absolute inset-0 -z-10">
+        <Spotlight />
+      </div>
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(0,0,0,0.06),transparent_60%)] -z-0" />
       <div className="container mx-auto px-4 py-16 md:py-24 grid gap-8 md:grid-cols-2 items-center relative">
         <div className="space-y-6">
           <Badge variant="secondary" className="w-fit">
             For Corporates & Entrepreneurs
           </Badge>
-          <h1 className="text-4xl md:text-5xl font-semibold text-balance">Capital, Approvals, and Scale — Delivered</h1>
+          <h1 className="text-4xl md:text-5xl font-semibold text-balance">
+            Capital, Approvals, and Scale — Delivered
+          </h1>
           <p className="text-muted-foreground text-pretty">
-            FiniScope partners with you end-to-end across banking, finance, mortgages, document approvals, and scaling to
-            unlock momentum with clarity and speed.
+            FiniScope partners with you end-to-end across banking, finance,
+            mortgages, document approvals, and scaling to unlock momentum with
+            clarity and speed.
           </p>
           <div className="flex gap-3">
             <Button asChild>
@@ -33,25 +40,34 @@ export function Hero() {
                 <div className="text-2xl font-semibold">
                   <AnimatedCounter value={120} />+
                 </div>
-                <div className="text-xs text-muted-foreground">Banking Partners</div>
+                <div className="text-xs text-muted-foreground">
+                  Banking Partners
+                </div>
               </div>
               <div>
                 <div className="text-2xl font-semibold">
                   $
-                  <AnimatedCounter value={950} formatter={(n) => `${Math.round(n)}M`} />
+                  <AnimatedCounter
+                    value={950}
+                    formatter={(n) => `${Math.round(n)}M`}
+                  />
                 </div>
-                <div className="text-xs text-muted-foreground">Capital Advised</div>
+                <div className="text-xs text-muted-foreground">
+                  Capital Advised
+                </div>
               </div>
               <div>
                 <div className="text-2xl font-semibold">
                   <AnimatedCounter value={14} />d
                 </div>
-                <div className="text-xs text-muted-foreground">Avg. Approval</div>
+                <div className="text-xs text-muted-foreground">
+                  Avg. Approval
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -21,7 +21,7 @@ export default function ServicesPage() {
   }, [q, cat])
 
   return (
-    <div className="container mx-auto px-4 py-12 space-y-8">
+    <div className="container mx-auto px-4 py-16 space-y-8">
       <header className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
           <h1 className="text-3xl md:text-4xl font-semibold text-balance">Services</h1>

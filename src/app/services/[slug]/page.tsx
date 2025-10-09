@@ -1,13 +1,16 @@
-import { notFound } from "next/navigation"
-import { servicesMap } from "@/lib/services-data"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
+"use client";
 
-export default function ServiceDetailPage({ params }: { params: { slug: string } }) {
-  const svc = servicesMap.get(params.slug)
-  if (!svc) return notFound()
+import { notFound } from "next/navigation";
+import { servicesMap } from "@/lib/services-data";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { MagicCard } from "@/components/ui/magic-card";
+
+export default function ServiceDetailPage({ params }: any) {
+  const svc = servicesMap.get(params.slug);
+  if (!svc) return notFound();
 
   return (
     <div className="container mx-auto px-4 py-12 space-y-8">
@@ -15,18 +18,26 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
         <Badge variant="secondary" className="w-fit">
           {svc.category}
         </Badge>
-        <h1 className="text-3xl md:text-4xl font-semibold text-balance">{svc.title}</h1>
+        <h1 className="text-3xl md:text-4xl font-semibold text-balance">
+          {svc.title}
+        </h1>
         <p className="text-muted-foreground text-pretty">{svc.summary}</p>
       </header>
 
       <section className="grid gap-6 md:grid-cols-3">
         {svc.features.map((f) => (
-          <Card key={f.title}>
+          <MagicCard
+            key={f.title}
+            gradientColor={"#bfd0dd55"}
+            className="group h-full px-6 py-6 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-md"
+          >
             <CardHeader>
               <CardTitle>{f.title}</CardTitle>
             </CardHeader>
-            <CardContent className="text-muted-foreground">{f.desc}</CardContent>
-          </Card>
+            <CardContent className="text-muted-foreground">
+              {f.desc}
+            </CardContent>
+          </MagicCard>
         ))}
       </section>
 
@@ -47,5 +58,5 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
         </Button>
       </div>
     </div>
-  )
+  );
 }
