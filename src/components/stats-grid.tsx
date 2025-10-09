@@ -6,7 +6,7 @@ import { Reveal } from "./reveal";
 import { CardStack } from "@/components/ui/card-stack";
 import { cn } from "@/lib/utils";
 import { MagicCard } from "@/components/ui/magic-card";
-// Light blue highlight utility
+
 export const Highlight = ({
   children,
   className,
@@ -17,7 +17,7 @@ export const Highlight = ({
   return (
     <span
       className={cn(
-        "font-bold text-blue-400 dark:bg-blue-700/[0.2] dark:text-blue-400 px-1 py-0.5 rounded",
+        "font-semibold text-blue-400 dark:bg-blue-700/[0.2] dark:text-blue-400 px-1 py-0.5 rounded",
         className
       )}
     >
@@ -40,8 +40,8 @@ const CARDS = [
     designation: "Senior Software Engineer",
     content: (
       <p>
-        These cards are amazing, <Highlight>I want to use them</Highlight> in my
-        project. Framer Motion is a godsend 🙏
+        These cards are amazing, <Highlight>I want to use them</Highlight> in
+        my project. Framer Motion is a godsend 🙏
       </p>
     ),
   },
@@ -72,31 +72,30 @@ const CARDS = [
 
 export function StatsGrid() {
   return (
-    <section className="container mx-auto px-4 py-16 md:py-10 relative">
-      {/* background gradient layer */}
-      <div className="absolute inset-0 -z-10 rounded-3xl" />
+    <section className="container mx-auto px-4 py-12 md:py-16 relative">
+      {/* Optional gradient background */}
+      <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-tr from-blue-50 to-blue-100 dark:from-black/20 dark:to-black/10" />
 
-      <div className="mb-12 text-center">
-        <h2 className="text-2xl md:text-3xl font-semibold text-balance">
+      <div className="mb-8 text-center md:mb-12">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-balance">
           Impact in Numbers
         </h2>
-        <p className="text-muted-foreground mt-2">
+        <p className="text-sm sm:text-base text-muted-foreground mt-2 max-w-md mx-auto">
           Credibility through outcomes across banking, finance, and approvals.
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        {/* Stats Grid (all visible) */}
-        <div className="grid gap-6 sm:grid-cols-2">
+      <div className="flex flex-col md:flex-row md:gap-12 items-center">
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-2 md:gap-6 w-full md:w-1/2">
           {STATS.map((s, i) => (
             <Reveal key={s.label} delayMs={100 * i}>
               <MagicCard
                 gradientColor={"#bfd0dd55"}
-                className="overflow-hidden group h-full px-6 py-6 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-md"
+                className="overflow-hidden group h-full px-4 sm:px-6 py-4 sm:py-6 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg"
               >
-                {/* <Card className="bg-white/70 dark:bg-black/40 backdrop-blur-md shadow-md border border-blue-100 dark:border-blue-900/40"> */}
                 <CardHeader>
-                  <CardTitle className="text-sm text-muted-foreground">
+                  <CardTitle className="text-xs sm:text-sm md:text-sm text-muted-foreground">
                     {s.label}
                   </CardTitle>
                 </CardHeader>
@@ -104,7 +103,7 @@ export function StatsGrid() {
                   <AnimatedCounter
                     value={s.value}
                     suffix={s.suffix || ""}
-                    className="text-3xl font-semibold text-blue-400 dark:text-blue-400"
+                    className="text-2xl sm:text-3xl md:text-3xl font-semibold text-blue-400 dark:text-blue-400"
                   />
                 </CardContent>
               </MagicCard>
@@ -112,7 +111,8 @@ export function StatsGrid() {
           ))}
         </div>
 
-        <div className="flex justify-center">
+        {/* Cards stack */}
+        <div className="mt-8 md:mt-0 md:w-1/2 flex justify-center">
           <CardStack items={CARDS} />
         </div>
       </div>
