@@ -25,7 +25,7 @@ export default function PartnersPage() {
   }, []);
 
   return (
-    <div className="container mx-auto px-4 py-18 ">
+    <div className="container mx-auto px-4 pt-18 ">
       <header className="max-w-3xl mx-auto text-center space-y-4">
         <h1 className="text-3xl md:text-5xl font-bold text-balance">
           Our Partners
