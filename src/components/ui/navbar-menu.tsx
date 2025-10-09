@@ -30,7 +30,7 @@ export const MenuItem = ({
       <motion.p transition={{ duration: 0.3 }}>
         <Link
           href={href}
-          className="cursor-pointer text-black hover:opacity-90 dark:text-white text-sm sm:text-base md:text-lg"
+          className="cursor-pointer text-black hover:opacity-90 dark:text-white text-xs sm:text-base md:text-lg"
         >
           {item}
         </Link>
@@ -57,6 +57,7 @@ export const MenuItem = ({
     </div>
   );
 };
+
 
 export const Menu = ({
   setActive,

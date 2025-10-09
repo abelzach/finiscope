@@ -27,7 +27,7 @@ export function SiteHeader() {
           "w-[95%] sm:w-auto"
         )}
       >
-        <div className="max-w-5xl mx-auto px-2 sm:px-4 py-1 sm:py-2">
+        <div className="max-w-5xl mx-auto px-1 sm:px-4 ">
           <Menu setActive={setActive}>
             {links
               .filter((link) => {

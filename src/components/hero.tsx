@@ -8,7 +8,7 @@ import { Spotlight } from "@/components/ui/spotlight-new";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-10">
+    <section className="relative overflow-hidden pt-6">
       <div className="absolute inset-0 -z-10">
         <Spotlight />
       </div>

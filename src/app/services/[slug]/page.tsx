@@ -1,5 +1,6 @@
 "use client";
 
+import { use } from "react";
 import { notFound } from "next/navigation";
 import { servicesMap } from "@/lib/services-data";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,8 +9,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MagicCard } from "@/components/ui/magic-card";
 
-export default function ServiceDetailPage({ params }: any) {
-  const svc = servicesMap.get(params.slug);
+export default function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params); 
+  const svc = servicesMap.get(slug);
+
   if (!svc) return notFound();
 
   return (
