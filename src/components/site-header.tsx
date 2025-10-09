@@ -8,7 +8,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/company", label: "Company" },
-  { href: "/founders", label: "Founders" },
+  { href: "/founders", label: "Founders", hideOnMobile: true },
   { href: "/partners", label: "Partners" },
   { href: "/calculators", label: "Calculators" },
 ];
@@ -29,17 +29,28 @@ export function SiteHeader() {
       >
         <div className="max-w-5xl mx-auto px-2 sm:px-4 py-1 sm:py-2">
           <Menu setActive={setActive}>
-            {links.map((link) => (
-              <MenuItem
-                key={link.href}
-                item={link.label}
-                active={active}
-                setActive={setActive}
-                href={link.href}
-              >
-                {/* Optional dropdown content */}
-              </MenuItem>
-            ))}
+            {links
+              .filter((link) => {
+                if (
+                  link.hideOnMobile &&
+                  typeof window !== "undefined" &&
+                  window.innerWidth < 640
+                ) {
+                  return false;
+                }
+                return true;
+              })
+              .map((link) => (
+                <MenuItem
+                  key={link.href}
+                  item={link.label}
+                  active={active}
+                  setActive={setActive}
+                  href={link.href}
+                >
+                  {/* Optional dropdown content */}
+                </MenuItem>
+              ))}
           </Menu>
         </div>
       </div>

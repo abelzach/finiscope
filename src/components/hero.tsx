@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -6,7 +8,7 @@ import { Spotlight } from "@/components/ui/spotlight-new";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-14">
+    <section className="relative overflow-hidden pt-10">
       <div className="absolute inset-0 -z-10">
         <Spotlight />
       </div>
