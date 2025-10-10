@@ -19,7 +19,7 @@ export function ApprovalSteps({
 
   return (
     <div className={cn("w-full", className)}>
-      <ol className="grid gap-4 md:grid-cols-4">
+      <ol className="grid gap-6 md:grid-cols-4">
         {steps.map((s, i) => {
           const isActive = i === active;
           const isComplete = i < active;
@@ -28,40 +28,41 @@ export function ApprovalSteps({
               <button
                 type="button"
                 onClick={() => setActive(i)}
-                className={`
-                      group relative w-full flex flex-col items-center gap-1 rounded-2xl border-2 p-2 
-                      transition-all duration-300 ease-out
-                      ${
-                        isActive
-                          ? "border-blue-600 bg-white shadow-xl shadow-blue-100 scale-105"
-                          : isComplete
-                            ? "border-indigo-300 bg-white hover:border-indigo-400 hover:shadow-lg"
-                            : "border-slate-200 bg-white hover:border-slate-300 hover:shadow-lg"
-                      }
-                    `}
+                className={cn(
+                  "group relative w-full flex flex-col items-center gap-2 rounded-2xl border p-4 transition-all duration-300 ease-out",
+                  "backdrop-blur-md bg-white/40 border-white/20 shadow-sm",
+                  isActive
+                    ? "scale-105 border-blue-500 shadow-lg"
+                    : isComplete
+                      ? "border-red-400 hover:border-red-500"
+                      : "border-slate-200 hover:border-slate-300"
+                )}
                 aria-current={isActive ? "step" : undefined}
               >
                 <span
                   className={cn(
-                    "flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[10px] font-medium",
+                    "flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-semibold backdrop-blur-sm shadow-sm",
                     isComplete
-                      ? "bg-[color-mix(in_oklch,var(--color-primary)_82%,transparent)] text-primary-foreground"
+                      ? "bg-red-500/80 text-white"
                       : isActive
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted text-foreground/70"
+                        ? "bg-blue-600/80 text-white"
+                        : "bg-slate-300/60 text-slate-700"
                   )}
                   aria-hidden="true"
                 >
                   {i + 1}
                 </span>
-                <span className="font-medium text-sm">{s.title}</span>
-              </button>
-              {isActive && (
-                <div
+                <span
                   className={cn(
-                    "rounded-lg border border-border bg-card/70 p-4 text-sm leading-relaxed"
+                    "font-medium text-sm tracking-wide",
+                    isActive ? "text-blue-700" : isComplete ? "text-red-500" : "text-slate-700"
                   )}
                 >
+                  {s.title}
+                </span>
+              </button>
+              {isActive && (
+                <div className="rounded-xl border border-white/20 bg-white/40 backdrop-blur-lg p-4 text-sm leading-relaxed text-slate-800 shadow-inner">
                   {s.desc}
                 </div>
               )}

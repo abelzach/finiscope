@@ -9,20 +9,25 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MagicCard } from "@/components/ui/magic-card";
 
-export default function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = use(params); 
+export default function ServiceDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = use(params);
   const svc = servicesMap.get(slug);
 
   if (!svc) return notFound();
 
   return (
-    <div className="container mx-auto px-4 py-12 space-y-8">
+    <div className="container mx-auto px-4 py-16 space-y-10">
       <header className="max-w-3xl space-y-3">
         <Badge variant="secondary" className="w-fit">
           {svc.category}
         </Badge>
-        <h1 className="text-3xl md:text-4xl font-semibold text-balance">
+        <h1 className="text-3xl md:text-4xl font-semibold text-balance relative inline-block">
           {svc.title}
+          <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 via-blue-400 to-red-500"></span>
         </h1>
         <p className="text-muted-foreground text-pretty">{svc.summary}</p>
       </header>
@@ -31,7 +36,6 @@ export default function ServiceDetailPage({ params }: { params: Promise<{ slug: 
         {svc.features.map((f) => (
           <MagicCard
             key={f.title}
-            gradientColor={"#bfd0dd55"}
             className="group h-full px-6 py-6 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-md"
           >
             <CardHeader>
@@ -46,7 +50,10 @@ export default function ServiceDetailPage({ params }: { params: Promise<{ slug: 
 
       {svc.details.length > 0 && (
         <section className="max-w-3xl space-y-4">
-          <h2 className="text-2xl font-semibold">How it works</h2>
+          <h2 className="text-2xl font-semibold relative inline-block">
+            How it works
+            <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 via-blue-400 to-red-500"></span>
+          </h2>
           <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
             {svc.details.map((d, i) => (
               <li key={i}>{d}</li>
@@ -56,9 +63,9 @@ export default function ServiceDetailPage({ params }: { params: Promise<{ slug: 
       )}
 
       <div className="pt-6">
-        <Button asChild>
+        <button className="px-8 py-2 rounded-full bg-gradient-to-b from-blue-500 to-blue-600 text-white focus:ring-2 focus:ring-blue-400 hover:shadow-xl transition duration-200">
           <Link href="/services">Back to services</Link>
-        </Button>
+        </button>
       </div>
     </div>
   );

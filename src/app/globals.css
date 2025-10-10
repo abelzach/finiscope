@@ -3,7 +3,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Palette: light neutral + black + white + teal primary */
+  /* Palette: light neutrals + professional blue primary + red accent */
   --background: oklch(0.99 0.002 240);
   --foreground: oklch(0.15 0 0);
 
@@ -13,8 +13,9 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.15 0 0);
 
-  --primary: oklch(90.771% 0.04139 246.097);
-  --primary-foreground: oklch(0.15 0 0);
+  /* Primary: Corporate Blue (approx ~blue-700) */
+  --primary: oklch(0.55 0.15 255);
+  --primary-foreground: oklch(0.99 0 0);
 
   --ring: var(--primary);
 
@@ -22,29 +23,31 @@
   --secondary-foreground: oklch(0.15 0 0);
 
   --muted: oklch(0.96 0.005 240);
-  --muted-foreground: oklch(0.5 0.01 240);
+  --muted-foreground: oklch(0.47 0.01 240);
 
-  --accent: oklch(0.92 0.04 220);
+  /* Accent: Strategic Red */
+  --accent: oklch(91.011% 0.03338 17.613);
   --accent-foreground: oklch(0.15 0 0);
 
-  --destructive: oklch(0.577 0.245 27.325);
+  --destructive: oklch(0.58 0.24 27);
   --destructive-foreground: oklch(0.99 0 0);
 
   --border: oklch(0.9 0.005 240);
   --input: oklch(0.9 0.005 240);
-  --ring: oklch(0.62 0.15 195);
+  --ring: var(--primary);
 
-  --chart-1: oklch(0.62 0.15 195);
-  --chart-2: oklch(0.5 0.18 210);
-  --chart-3: oklch(0.45 0.12 180);
-  --chart-4: oklch(0.7 0.1 170);
-  --chart-5: oklch(0.55 0.08 200);
+  /* Charts: blues + reds for contrast */
+  --chart-1: oklch(0.55 0.15 255); /* blue */
+  --chart-2: oklch(0.62 0.20 25);  /* red */
+  --chart-3: oklch(0.7 0.12 255);  /* light blue */
+  --chart-4: oklch(0.75 0.14 25);  /* light red */
+  --chart-5: oklch(0.6 0.05 240);  /* neutral blue-gray */
 
   --radius: 0.5rem;
 
   --sidebar: oklch(0.99 0 0);
   --sidebar-foreground: oklch(0.15 0 0);
-  --sidebar-primary: oklch(0.62 0.15 195);
+  --sidebar-primary: var(--primary);
   --sidebar-primary-foreground: oklch(0.99 0 0);
   --sidebar-accent: oklch(0.97 0.005 240);
   --sidebar-accent-foreground: oklch(0.15 0 0);
@@ -62,16 +65,16 @@
   --popover: oklch(0.18 0 0);
   --popover-foreground: oklch(0.99 0 0);
 
-  --primary: oklch(0.62 0.15 195);
+  --primary: oklch(0.62 0.15 255);
   --primary-foreground: oklch(0.99 0 0);
 
   --secondary: oklch(0.22 0 0);
   --secondary-foreground: oklch(0.99 0 0);
 
   --muted: oklch(0.22 0 0);
-  --muted-foreground: oklch(0.65 0.01 240);
+  --muted-foreground: oklch(0.7 0.01 240);
 
-  --accent: oklch(0.25 0 0);
+  --accent: oklch(0.5 0.18 25);
   --accent-foreground: oklch(0.99 0 0);
 
   --destructive: oklch(0.396 0.141 25.723);

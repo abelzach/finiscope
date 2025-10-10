@@ -5,8 +5,9 @@ export default function CompanyPage() {
   return (
     <div className="container mx-auto px-4 py-16 space-y-10">
       <header className="max-w-3xl">
-        <h1 className="text-3xl md:text-4xl font-semibold text-balance">
+        <h1 className="text-3xl md:text-4xl font-semibold text-balance relative inline-block">
           FiniScope Company Profile
+          <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 via-blue-400 to-red-500"></span>
         </h1>
         <p className="text-muted-foreground mt-4 text-pretty">
           We help corporates and entrepreneurs navigate banking, finance,
@@ -32,7 +33,6 @@ export default function CompanyPage() {
         ].map((it) => (
           <MagicCard
             key={it.title}
-            gradientColor={"#bfd0dd55"}
             className="group h-full px-6 py-6 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-md"
           >
             <CardHeader>
@@ -47,7 +47,6 @@ export default function CompanyPage() {
 
       <section className="grid gap-6 md:grid-cols-2">
         <MagicCard
-          gradientColor={"#bfd0dd55"}
           className="group h-full px-6 py-6 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-md"
         >
           <CardHeader>
@@ -60,7 +59,6 @@ export default function CompanyPage() {
           </CardContent>
         </MagicCard>
         <MagicCard
-          gradientColor={"#bfd0dd55"}
           className="group h-full px-6 py-6 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-md"
         >
           <CardHeader>

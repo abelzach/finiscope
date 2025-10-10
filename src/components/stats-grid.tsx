@@ -72,9 +72,8 @@ const CARDS = [
 
 export function StatsGrid() {
   return (
-    <section className="container mx-auto px-4 py-12 md:py-16 relative">
-      {/* Optional gradient background */}
-      <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-tr from-blue-50 to-blue-100 dark:from-black/20 dark:to-black/10" />
+    <section className="container mx-auto px-4 py-12 md:py-16 relative mt-6">
+      <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-tr from-blue-50 via-red-50 to-blue-100 dark:from-black/20 dark:to-black/10" />
 
       <div className="mb-8 text-center md:mb-12">
         <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-balance">
@@ -91,7 +90,6 @@ export function StatsGrid() {
           {STATS.map((s, i) => (
             <Reveal key={s.label} delayMs={100 * i}>
               <MagicCard
-                gradientColor={"#bfd0dd55"}
                 className="overflow-hidden group h-full px-4 sm:px-6 py-4 sm:py-6 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg"
               >
                 <CardHeader>

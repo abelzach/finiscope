@@ -64,14 +64,14 @@ const founders = [
 export default function FoundersPage() {
   return (
     <div className="container mx-auto px-4 py-16">
-      <h1 className="text-3xl md:text-4xl font-semibold text-balance mb-8">
+      <h1 className="text-3xl md:text-4xl font-semibold text-balance mb-8 relative inline-block">
         Founders
+        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 via-blue-400 to-red-500"></span>
       </h1>
       <div className="grid gap-8 md:grid-cols-2">
         {founders.map((f) => (
           <MagicCard
             key={f.name}
-            gradientColor={"#bfd0dd55"}
             className="overflow-hidden group h-full px-6 py-6 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-md"
           >
             <CardHeader>

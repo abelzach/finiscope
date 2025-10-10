@@ -21,10 +21,17 @@ export default function ServicesPage() {
   }, [q, cat])
 
   return (
-    <div className="container mx-auto px-4 py-16 space-y-8">
+    <div className="container relative overflow-hidden mx-auto px-4 py-16 space-y-8">
+      {/* Subtle professional red theme background */}
+      <div className="pointer-events-none absolute inset-0 -z-10 rounded-3xl">
+        <div className="absolute inset-0 to-transparent" />
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[480px] w-[960px] rounded-full blur-3xl opacity-30 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(239,68,68,0.25)_0%,rgba(239,68,68,0.08)_40%,transparent_70%)]" />
+      </div>
       <header className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
-          <h1 className="text-3xl md:text-4xl font-semibold text-balance">Services</h1>
+          <h1 className="text-3xl md:text-4xl font-semibold text-balance relative inline-block">Services
+            <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 via-blue-400 to-red-500"></span>
+          </h1>
           <p className="text-muted-foreground mt-2">
             Explore our capabilities. Click a service for detailed information.
           </p>

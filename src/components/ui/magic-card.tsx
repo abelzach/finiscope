@@ -19,10 +19,10 @@ export function MagicCard({
   children,
   className,
   gradientSize = 200,
-  gradientColor = "#262626",
-  gradientOpacity = 0.8,
-  gradientFrom = "#4ec9baff", // teal-ish blue
-  gradientTo = "#d3f5f9ff", // pale cyan
+  gradientColor = "#1e40af55", // blue-800 at ~33% alpha for hover glow
+  gradientOpacity = 0.6,
+  gradientFrom = "#1d4ed833", // blue-600 ~20% alpha
+  gradientTo = "#ef44441a", // red-500 ~10% alpha
 }: MagicCardProps) {
   const mouseX = useMotionValue(-gradientSize);
   const mouseY = useMotionValue(-gradientSize);

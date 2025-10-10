@@ -27,8 +27,9 @@ export default function PartnersPage() {
   return (
     <div className="container mx-auto px-4 pt-18 ">
       <header className="max-w-3xl mx-auto text-center space-y-4">
-        <h1 className="text-3xl md:text-5xl font-bold text-balance">
+        <h1 className="text-3xl md:text-5xl font-bold text-balance relative inline-block">
           Our Partners
+          <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 via-blue-400 to-red-500"></span>
         </h1>
         <p className="text-muted-foreground text-lg md:text-xl">
           We collaborate with leading banks, NBFIs, legal and advisory firms to

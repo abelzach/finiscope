@@ -30,7 +30,7 @@ export const MenuItem = ({
       <motion.p transition={{ duration: 0.3 }}>
         <Link
           href={href}
-          className="cursor-pointer text-black hover:opacity-90 dark:text-white text-xs sm:text-base md:text-lg"
+          className="cursor-pointer text-black hover:text-accent dark:text-white text-xs sm:text-base md:text-lg transition-colors"
         >
           {item}
         </Link>
@@ -112,7 +112,7 @@ export const HoveredLink = ({ children, ...rest }: any) => {
   return (
     <a
       {...rest}
-      className="text-neutral-700 dark:text-neutral-200 hover:text-black "
+      className="text-neutral-700 dark:text-neutral-200 hover:text-accent transition-colors"
     >
       {children}
     </a>
